@@ -11,7 +11,7 @@ const URL_IMAGENES='https://api-ninjas.com/images/dogs?&O4TWrUym6Vu5qX5MdTtaoQ==
 let dogBreedNames = ['golden retriever','dalmatian'];
 
 async function fetchdata(breedName){
-    let url = `https://api.api-ninjas.com/v1/dogs?name=${breedName}&X-Api-Key=O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy`;
+    let url = `https://api.api-ninjas.com/v1/dogs?name=${breedName}&X-Api-Key=O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy;`
     const dogData = await fetch(url); //el array tiene 24 valores
     const json = await dogData.json();
     return json;
@@ -26,10 +26,10 @@ async function razaPerro()
         //dogBreedNameTitle.innerHTML = json[0]["name"];
         //let divDog = document.getElementById(`dogDescription${i}`);
         //divDog.innerHTML = "";
-        let imagenGoldenRetriever = document.getElementById("imagen-golden-retriever");
-        imagenGoldenRetriever.src = dogBreedNames[0]["image_link"];    
-        let h5 = document.getElementById("golden-retriever");
-        h5.innerHTML = dogBreedNames[0]
+        let imagenPerro = document.getElementById(`imagen${i}`);
+        imagenPerro.src = json[0]["image_link"];    
+        let h5 = document.getElementById(`nombreDeRaza${i}`);
+        h5.innerHTML = json[0]["name"];
         console.log(trainabilityDescription(json[0]["trainability"]));
         console.log(barkingDescription(json[0]["barking"])); 
         console.log(energyDescription(json[0]["energy"])); 
