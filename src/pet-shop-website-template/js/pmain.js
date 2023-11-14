@@ -6,9 +6,9 @@ let h4 = document.getElementById("parrafoPerros");
 h4.innerHTML = "Entre las más conocidas se encuentran.Affenpinscher. Bulldog. Chihuahua.Doberman.Labrador. Espaniel.Retriever.Poodle. Pitbull. Pinscher."
 
 const URL = 'https://api-ninjas.com/api?&O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy';
-//const URL_IMAGENES= 'https://dog.ceo/api/breeds/image/random/10';
+const URL_IMAGENES='https://api-ninjas.com/images/dogs?&O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy';
 
-var dogBreedNames = ['golden retriever', 'golden retriever']
+let dogBreedNames = ['golden retriever','dalmatian'];
 
 async function fetchdata(breedName){
     let url = `https://api.api-ninjas.com/v1/dogs?name=${breedName}&X-Api-Key=O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy`;
@@ -20,22 +20,29 @@ async function fetchdata(breedName){
 async function razaPerro()
 {
     for(let i = 0; i < dogBreedNames.length; i++){
-        await new Promise (resolve =>setTimeout(resolve,500));
+        
         let json = await fetchdata(dogBreedNames[i]);
         //let dogBreedNameTitle= document.getElementById(`dogNameTitle${i}`)
         //dogBreedNameTitle.innerHTML = json[0]["name"];
         //let divDog = document.getElementById(`dogDescription${i}`);
         //divDog.innerHTML = "";
-        console.log(trainabilityDescription(json[i]["trainability"]));
-        console.log(barkingDescription(json[i]["barking"])); 
-        console.log(energyDescription(json[i]["energy"])); 
+        let imagenGoldenRetriever = document.getElementById("imagen-golden-retriever");
+        imagenGoldenRetriever.src = dogBreedNames[0]["image_link"];    
+        let h5 = document.getElementById("golden-retriever");
+        h5.innerHTML = dogBreedNames[0]
+        console.log(trainabilityDescription(json[0]["trainability"]));
+        console.log(barkingDescription(json[0]["barking"])); 
+        console.log(energyDescription(json[0]["energy"])); 
           
     }
    
 }
 razaPerro();
 
-/*async function imagenPerro(json){
+/*async function imagenPerro(URL_IMAGENES){
+    const res = await fetch(URL_IMAGENES);
+    const data = await fetch(res.json);
+    console.log(data);
     
 }
 imagenPerro();*/
