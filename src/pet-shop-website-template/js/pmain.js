@@ -8,41 +8,55 @@ h4.innerHTML = "Entre las más conocidas se encuentran.Affenpinscher. Bulldog. C
 const URL = 'https://api-ninjas.com/api?&O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy';
 //const URL_IMAGENES= 'https://dog.ceo/api/breeds/image/random/10';
 
-var name = 'golden retriever'
+var dogBreedNames = ['golden retriever', 'dalmatian']
 
 async function fetchdata(breedName){
-    $.ajax({
-        method: 'GET',
-        url: 'https://api.api-ninjas.com/v1/dogs?name=' + breedName,
-        headers: { 'X-Api-Key': 'O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy'},
-        contentType: 'application/json',
-        success: function(result) {
-            console.log(result);
-        },
-        error: function ajaxError(jqXHR) {
-            console.error('Error: ', jqXHR.responseText);
-        }
-    });
+    let url = `https://api.api-ninjas.com/v1/dogs?name=${breedName}&X-Api-Key=O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy`;
+    const dogData = await fetch(url); //el array tiene 24 valores
+    const json = await dogData.json();
+    return json;
 }
 
-async function razaPerro(){
-    
-    console.log(fetchdata("golden retriever"));
-    
+async function razaPerro()
+{
+    for(let i = 0; i < dogBreedNames.length; i++){
+        let json = await fetchdata(dogBreedNames[i]);
+        //let dogBreedNameTitle= document.getElementById(`dogNameTitle${i}`)
+        //dogBreedNameTitle.innerHTML = json[0]["name"];
+        //let divDog = document.getElementById(`dogDescription${i}`);
+        //divDog.innerHTML = "";
+        console.log(trainabilityDescription(json[0]["trainability"]));    
+    }
+   
 }
 razaPerro();
 
-async function imagenPerro(){
-    const res = await fetch(URL_IMAGENES);
-    const data =await res.json();
-   // console.log(data);
-    let imagenesPerros = data["message"];
-    console.log(imagenesPerros);
-    let imgPerros = document.getElementById("imagenGeneralPerros");
-    imgPerros.src = imagenesPerros[2];
+async function imagenPerro(json){
+  
     
 }
 imagenPerro();
 
 
-
+function trainabilityDescription(trainability)
+{
+    let description = "";
+    switch(trainability) {
+            case 1:
+            description = "no es muy entrenable";
+            break;
+            case 2:
+            description = "es algo entrenable";
+            break;
+            case 3:
+            description = "es mediocre en el entrenamiento";
+            break;
+            case 4:
+                description = "es bueno para entrenarse";
+                break;
+            case 5:
+            description = "es muy facil de entrenar";
+            break;
+      }
+    return description;
+}
