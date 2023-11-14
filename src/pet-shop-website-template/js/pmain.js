@@ -8,7 +8,7 @@ h4.innerHTML = "Entre las más conocidas se encuentran.Affenpinscher. Bulldog. C
 const URL = 'https://api-ninjas.com/api?&O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy';
 //const URL_IMAGENES= 'https://dog.ceo/api/breeds/image/random/10';
 
-var dogBreedNames = ['golden retriever', 'dalmatian']
+var dogBreedNames = ['golden retriever', 'golden retriever']
 
 async function fetchdata(breedName){
     let url = `https://api.api-ninjas.com/v1/dogs?name=${breedName}&X-Api-Key=O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy`;
@@ -20,22 +20,25 @@ async function fetchdata(breedName){
 async function razaPerro()
 {
     for(let i = 0; i < dogBreedNames.length; i++){
+        await new Promise (resolve =>setTimeout(resolve,500));
         let json = await fetchdata(dogBreedNames[i]);
         //let dogBreedNameTitle= document.getElementById(`dogNameTitle${i}`)
         //dogBreedNameTitle.innerHTML = json[0]["name"];
         //let divDog = document.getElementById(`dogDescription${i}`);
         //divDog.innerHTML = "";
-        console.log(trainabilityDescription(json[0]["trainability"]));    
+        console.log(trainabilityDescription(json[i]["trainability"]));
+        console.log(barkingDescription(json[i]["barking"])); 
+        console.log(energyDescription(json[i]["energy"])); 
+          
     }
    
 }
 razaPerro();
 
-async function imagenPerro(json){
-  
+/*async function imagenPerro(json){
     
 }
-imagenPerro();
+imagenPerro();*/
 
 
 function trainabilityDescription(trainability)
@@ -56,6 +59,54 @@ function trainabilityDescription(trainability)
                 break;
             case 5:
             description = "es muy facil de entrenar";
+            break;
+      }
+    return description;
+}
+
+
+function barkingDescription(barking)
+{
+    let description = "";
+    switch(barking) {
+            case 1:
+            description = "ladra muy poco";
+            break;
+            case 2:
+            description = "ladra poco";
+            break;
+            case 3:
+            description = "ladra medianamente";
+            break;
+            case 4:
+                description = "ladra frecuentemente";
+                break;
+            case 5:
+            description = "ladra siempre ";
+            break;
+      }
+    return description;
+}
+
+
+function energyDescription(energy)
+{
+    let description = "";
+    switch(energy) {
+            case 1:
+            description = "tiene poca energia";
+            break;
+            case 2:
+            description = "tiene energia";
+            break;
+            case 3:
+            description = "tiene energia medianamente";
+            break;
+            case 4:
+                description = "es energico";
+                break;
+            case 5:
+            description = "es muy energico ";
             break;
       }
     return description;
