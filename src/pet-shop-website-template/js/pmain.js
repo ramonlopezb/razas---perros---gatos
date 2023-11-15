@@ -4,6 +4,16 @@ let razasPerro = document.getElementById("razas de Perros")
 razasPerro.innerHTML = "Existen más de 100 razas de perros en todo el mundo, algunas tienen varias sub-razas"
 let h4 = document.getElementById("parrafoPerros");
 h4.innerHTML = "Entre las más conocidas se encuentran: Golden Retriever,Dalmatian,Bulldog,Doberman Pinscher."
+let perrosGatos = document.getElementById("perrosGatos");
+perrosGatos.innerHTML = "Perros Gatos";
+let galleriaPerros= document.getElementById("galleriaPerros");
+galleriaPerros.innerHTML="Galleria Perros";
+let nombrePerro = document.getElementById("perroUno");
+nombrePerro.innerHTML= "Dog Perro";
+let descripcionPerro =document.getElementById("descripcionPerro");
+descripcionPerro.innerHTML= "El mejor amigo del hombre";
+let descripcionPerroDos = document.getElementById("descripcionPerroDos");
+descripcionPerroDos.innerHTML= "Animal domestico con tamaño y formas diferentes, con pelaje diverso y un olfato bien desarrollado";
 
 const URL = 'https://api-ninjas.com/api?&O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy';
 //const URL_IMAGENES='https://api-ninjas.com/images/dogs?&O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy';
