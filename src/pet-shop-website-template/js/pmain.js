@@ -3,12 +3,12 @@ perro.innerHTML = "Perros";
 let razasPerro = document.getElementById("razas de Perros")
 razasPerro.innerHTML = "Existen más de 100 razas de perros en todo el mundo, algunas tienen varias sub-razas"
 let h4 = document.getElementById("parrafoPerros");
-h4.innerHTML = "Entre las más conocidas se encuentran.Affenpinscher. Bulldog. Chihuahua.Doberman.Labrador. Espaniel.Retriever.Poodle. Pitbull. Pinscher."
+h4.innerHTML = "Entre las más conocidas se encuentran: Golden Retriever,Dalmatian,Bulldog,Doberman Pinscher."
 
 const URL = 'https://api-ninjas.com/api?&O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy';
-const URL_IMAGENES='https://api-ninjas.com/images/dogs?&O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy';
+//const URL_IMAGENES='https://api-ninjas.com/images/dogs?&O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy';
 
-let dogBreedNames = ['golden retriever','dalmatian'];
+let dogBreedNames = ['golden retriever','dalmatian','bulldog','doberman pinscher' ];
 
 async function fetchdata(breedName){
     let url = `https://api.api-ninjas.com/v1/dogs?name=${breedName}&X-Api-Key=O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy;`
