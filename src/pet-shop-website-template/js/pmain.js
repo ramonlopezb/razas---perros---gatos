@@ -7,7 +7,7 @@ h4.innerHTML = "Entre las más conocidas se encuentran: Golden Retriever,Dalmati
 let perrosGatos = document.getElementById("perrosGatos");
 perrosGatos.innerHTML = "Perros Gatos";
 let galleriaPerros= document.getElementById("galleriaPerros");
-galleriaPerros.innerHTML="Galleria Perros";
+galleriaPerros.innerHTML="Gatos";
 let nombrePerro = document.getElementById("perroUno");
 nombrePerro.innerHTML= "Dog Perro";
 let descripcionPerro =document.getElementById("descripcionPerro");
@@ -15,10 +15,10 @@ descripcionPerro.innerHTML= "El mejor amigo del hombre";
 let descripcionPerroDos = document.getElementById("descripcionPerroDos");
 descripcionPerroDos.innerHTML= "Animal domestico con tamaño y formas diferentes, con pelaje diverso y un olfato bien desarrollado";
 
-const URL = 'https://api-ninjas.com/api?&O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy';
+//const URL = 'https://api-ninjas.com/api?&O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy';
 //const URL_IMAGENES='https://api-ninjas.com/images/dogs?&O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy';
 
-let dogBreedNames = ['golden retriever','dalmatian','bulldog','doberman pinscher' ];
+let dogBreedNames = ['golden retriever','dalmatian','bulldog','doberman pinscher'];
 
 async function fetchdata(breedName){
     let url = `https://api.api-ninjas.com/v1/dogs?name=${breedName}&X-Api-Key=O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy;`
@@ -48,6 +48,31 @@ async function razaPerro()
    
 }
 razaPerro();
+
+
+
+/*async function galeriaRazaPerro()
+{
+    for(let i = 0; i < galeriaBreedNames.length; i++){
+        
+        let json = await fetchdata(galeriaBreedNames[i]);
+        //let dogBreedNameTitle= document.getElementById(`dogNameTitle${i}`)
+        //dogBreedNameTitle.innerHTML = json[0]["name"];
+        //let divDog = document.getElementById(`dogDescription${i}`);
+        //divDog.innerHTML = "";
+        let imagen21 = document.getElementById(`imagen${i}`);
+        imagen21.src = json[0]["image_link"];    
+        let p = document.getElementById(`nombreDeRaza${i}`);
+        p.innerHTML = json[0]["name"];
+        console.log(trainabilityDescription(json[0]["trainability"]));
+        console.log(barkingDescription(json[0]["barking"])); 
+        console.log(energyDescription(json[0]["energy"])); 
+          
+    }
+   
+}
+galeriaRazaPerro();*/
+
 
 /*async function imagenPerro(URL_IMAGENES){
     const res = await fetch(URL_IMAGENES);
