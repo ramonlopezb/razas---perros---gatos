@@ -40,9 +40,16 @@ async function razaPerro()
         imagenPerro.src = json[0]["image_link"];    
         let h5 = document.getElementById(`nombreDeRaza${i}`);
         h5.innerHTML = json[0]["name"];
-        console.log(trainabilityDescription(json[0]["trainability"]));
-        console.log(barkingDescription(json[0]["barking"])); 
-        console.log(energyDescription(json[0]["energy"])); 
+        let trainability = trainabilityDescription(json[0]["trainability"]);
+        let barking =barkingDescription(json[0]["barking"]); 
+        let energy = energyDescription(json[0]["energy"]);
+        let contenidoDescripcion = `Esta raza ${trainability}, ${barking} y ${energy}`;
+        let description = document.getElementById(`descripcionRaza${i}`);
+        description.innerHTML= contenidoDescripcion;
+
+        console.log(contenidoDescripcion);
+         
+        
           
     }
    
@@ -50,54 +57,21 @@ async function razaPerro()
 razaPerro();
 
 
-
-/*async function galeriaRazaPerro()
-{
-    for(let i = 0; i < galeriaBreedNames.length; i++){
-        
-        let json = await fetchdata(galeriaBreedNames[i]);
-        //let dogBreedNameTitle= document.getElementById(`dogNameTitle${i}`)
-        //dogBreedNameTitle.innerHTML = json[0]["name"];
-        //let divDog = document.getElementById(`dogDescription${i}`);
-        //divDog.innerHTML = "";
-        let imagen21 = document.getElementById(`imagen${i}`);
-        imagen21.src = json[0]["image_link"];    
-        let p = document.getElementById(`nombreDeRaza${i}`);
-        p.innerHTML = json[0]["name"];
-        console.log(trainabilityDescription(json[0]["trainability"]));
-        console.log(barkingDescription(json[0]["barking"])); 
-        console.log(energyDescription(json[0]["energy"])); 
-          
-    }
-   
-}
-galeriaRazaPerro();*/
-
-
-/*async function imagenPerro(URL_IMAGENES){
-    const res = await fetch(URL_IMAGENES);
-    const data = await fetch(res.json);
-    console.log(data);
-    
-}
-imagenPerro();*/
-
-
 function trainabilityDescription(trainability)
 {
     let description = "";
     switch(trainability) {
             case 1:
-            description = "no es muy entrenable";
+            description = "no es muy dificil de entrenar";
             break;
             case 2:
-            description = "es algo entrenable";
+            description = "asimila poco el entrenamiento";
             break;
             case 3:
-            description = "es mediocre en el entrenamiento";
+            description = "asimila algunas cosas en el entrenamiento";
             break;
             case 4:
-                description = "es bueno para entrenarse";
+                description = "es buena para entrenarse";
                 break;
             case 5:
             description = "es muy facil de entrenar";

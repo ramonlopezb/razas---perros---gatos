@@ -1,14 +1,14 @@
 console.log("hello world");
-/*let perrosGatos = document.getElementById("perrosGatos");
-perrosGatos.innerHTML= "Perros/Gatos";
+//let perrosGatos = document.getElementById("perrosGatos");
+//perrosGatos.innerHTML= "Perros/Gatos";
 let perros = document.getElementById("perros");
 perros.innerHTML = "Perros"
 let galleriaPerros = document.getElementById("galleriaPerros");
-galleriaPerros.innerHTML = "Galleria Perros";
-let dogBreedNames = ['golden retriever','dalmatian','bulldog','doberman pinscher'];*/
+galleriaPerros.innerHTML = "Gatos";
+//let dogBreedNames = ['golden retriever','dalmatian','bulldog','doberman pinscher'];*/
 let catBreedNames = ['manx','lykoi','sphynx','maine','Turkish Angora'];
-console.log(catBreedNames);
-console.log("gatos");
+let nombreDeRaza = 'burmilla';
+
 
 async function fetchdata(name){
     let url = `https://api.api-ninjas.com/v1/cats?name=${name}&X-Api-Key=O4TWrUym6Vu5qX5MdTtaoQ==qzxgRdqGOBrv3VJy;`
@@ -27,19 +27,29 @@ async function razaGato()
         //dogBreedNameTitle.innerHTML = json[0]["name"];
         //let divDog = document.getElementById(`dogDescription${i}`);
         //divDog.innerHTML = "";
-        let imagenGato = document.getElementById(`imagen${i}`);
-        imagenGato.src = json[0]["image_link"];    
+        let imagenes= document.getElementById(`imagen${i}`);
+        imagenes.src = json[0]["image_link"];    
         let h5 = document.getElementById(`nombreDeRazaGato${i}`);
         h5.innerHTML = json[0]["name"];
-        console.log(trainabilityDescription(json[0]["shedding"]));
-        console.log(barkingDescription(json[0]["playfulness"])); 
-        console.log(energyDescription(json[0]["grooming"])); 
+        let shedding = sheddingDescription(json[0]["shedding"]);
+        let playfulness = playfulnessDescription(json[0]["playfulness"]); 
+        let grooming = groomingDescription(json[0]["grooming"]); 
+        let contenidoDescripcionGato =`Esta Raza ${shedding},${playfulness} y ${grooming}`;
+        let descripcion = document.getElementById(`descripcionRaza${i}`);
+        descripcion.innerHTML = contenidoDescripcionGato;
           
     }   
 }
 razaGato();
 
-function trainabilityDescription(shedding)
+async function buscarYAsignarImagenGato(){
+    let json = await fetchdata(nombreDeRaza);
+    let imagenGato = document.getElementById("imagenGato");
+    imagenGato.src = json[0]["image_link"];
+}
+buscarYAsignarImagenGato();
+
+function sheddingDescription(shedding)
 {
     let description = "";
     switch(shedding) {
@@ -63,7 +73,7 @@ function trainabilityDescription(shedding)
 }
 
 
-function barkingDescription(playfulness)
+function playfulnessDescription(playfulness)
 {
     let description = "";
     switch(playfulness) {
@@ -87,7 +97,7 @@ function barkingDescription(playfulness)
 }
 
 
-function energyDescription(grooming)
+function groomingDescription(grooming)
 {
     let description = "";
     switch(grooming) {
