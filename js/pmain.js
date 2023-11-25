@@ -1,3 +1,4 @@
+
 let perro = document.getElementById("perros");
 perro.innerHTML = "Perros";
 let razasPerro = document.getElementById("razas de Perros")
@@ -47,8 +48,7 @@ async function razaPerro()
         let description = document.getElementById(`descripcionRaza${i}`);
         description.innerHTML= contenidoDescripcion;
 
-        console.log(contenidoDescripcion);
-         
+        console.log(contenidoDescripcion);       
         
           
     }
